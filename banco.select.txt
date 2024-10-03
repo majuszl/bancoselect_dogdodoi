@@ -1,0 +1,68 @@
+/* Atividade 1 */
+SELECT * FROM VETERINARIO
+WHERE ESPECIALIDADE = 'Dermatologista'
+
+/* Atividade 2 */
+SELECT * FROM PACIENTE
+WHERE idade BETWEEN 2 AND 5
+
+/* Atividade 3 */
+SELECT * FROM AGENDAMENTO
+WHERE data_hora BETWEEN '2024-01-01' AND '2024-03-31'
+
+/* Atividade 4 */
+SELECT * FROM MEDICAMENTOS
+WHERE preco > 25
+
+/* Atividade 5 */
+SELECT * FROM RECEITA r
+WHERE data_emissao > '2024-06-01' 
+	AND r.ID_AGENDAMENTO = (SELECT a.id_agendamento FROM agendamento a 
+							WHERE a.ID_VETERINARIO = (SELECT v.id_veterinario
+													  FROM VETERINARIO v
+													  WHERE v.nome = 'Dr. Ana Souza'))
+
+/* Atividade 6 */
+SELECT PACIENTE.ID_PACIENTE, PACIENTE.NOME, PACIENTE.RACA FROM PACIENTE
+WHERE PACIENTE.ID_TUTOR = (SELECT TUTOR.ID_TUTOR FROM tutor WHERE TUTOR.NOME = 'Maria Silva')
+
+/* Atividade 7 */
+SELECT * FROM ITENSRECEITA
+WHERE ID_ITEM_RECEITA = (SELECT ID_MEDICAMENTO FROM MEDICAMENTOS WHERE NOME = 'Anti-inflamatório Y')
+
+/* Atividade 8 
+ * NÃO ERA PARA REALIZAR */
+
+/* Atividade 9 */
+SELECT AGENDAMENTO.ID_VETERINARIO, AGENDAMENTO.MOTIVO FROM AGENDAMENTO
+WHERE AGENDAMENTO.MOTIVO = 'Exame de sangue' 
+	AND ID_AGENDAMENTO = (SELECT a.id_agendamento FROM agendamento a
+							WHERE a.ID_VETERINARIO = (SELECT v.id_veterinario
+													  FROM VETERINARIO v
+													  WHERE v.nome = 'Dr. Pedro Lima'))
+
+/* Atividade 10 */
+SELECT * FROM MEDICAMENTOS
+WHERE preco < 50 AND DESCRICAO IS NOT NULL
+
+/* Atividade 11 */
+SELECT * FROM PACIENTE
+WHERE peso BETWEEN 3 AND 10 
+
+/* Atividade 12 */
+SELECT ID_TUTOR FROM PACIENTE
+WHERE ID_TUTOR = 'Carlos Lima' AND (peso > 5)
+
+/* Atividade 13 */
+SELECT * FROM PACIENTE
+WHERE ESPECIE = 'Cão' AND (peso < 7)
+
+/* Atividade 14 */
+SELECT * FROM AGENDAMENTO
+WHERE data_hora BETWEEN '2024-04-01' AND '2024-06-30'
+
+/* Atividade 15 */
+
+
+/* Atividade 16 */
+
